@@ -19,14 +19,21 @@ export default function LecturersPage() {
   const [lastUrlQuery, setLastUrlQuery] = useState(urlQuery);
   const [sort, setSort] = useState('default');
   const [favoriteIds, setFavoriteIds] = useLocalStorage('edu-platform:favorite-lecturers', []);
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
 
   if (lastUrlQuery !== urlQuery) {
     setLastUrlQuery(urlQuery);
     setSearch(urlQuery);
   }
 
-  const visible = useMemo(() => sortLecturers(filterLecturers(lecturers, search), sort), [search, sort]);
   const favorites = Array.isArray(favoriteIds) ? favoriteIds : [];
+  const matching = useMemo(() => sortLecturers(filterLecturers(lecturers, search), sort), [search, sort]);
+  const visible = favoritesOnly
+    ? matching.filter((lecturer) => favorites.includes(lecturer.id))
+    : matching;
+  const emptyMessage = favoritesOnly
+    ? 'Нет избранных лекторов по текущим фильтрам'
+    : `По запросу «${search.trim()}» никого не нашли`;
 
   function toggleFavorite(id) {
     setFavoriteIds((storedIds) => {
@@ -65,12 +72,19 @@ export default function LecturersPage() {
             ))}
           </select>
         </label>
+        <Button
+          variant={favoritesOnly ? 'primary' : 'outline'}
+          aria-pressed={favoritesOnly}
+          onClick={() => setFavoritesOnly((enabled) => !enabled)}
+        >
+          Только избранные
+        </Button>
       </div>
 
       <p className="toolbar__count" aria-live="polite">
         {visible.length > 0
           ? `Найдено ${visible.length} ${plural(visible.length, ['лектор', 'лектора', 'лекторов'])}`
-          : `По запросу «${search.trim()}» никого не нашли`}
+          : emptyMessage}
       </p>
 
       {visible.length > 0 ? (
@@ -85,7 +99,12 @@ export default function LecturersPage() {
           ))}
         </div>
       ) : (
-        <Button onClick={() => setSearch('')}>Сбросить поиск</Button>
+        <Button onClick={() => {
+          setSearch('');
+          setFavoritesOnly(false);
+        }}>
+          {favoritesOnly ? 'Показать всех лекторов' : 'Сбросить поиск'}
+        </Button>
       )}
     </section>
   );
