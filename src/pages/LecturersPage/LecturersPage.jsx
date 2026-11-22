@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import LecturerCard from '../../components/LecturerCard/LecturerCard.jsx';
 import Button from '../../components/Button/Button.jsx';
 import useDocumentTitle from '../../hooks/useDocumentTitle.js';
+import useLocalStorage from '../../hooks/useLocalStorage.js';
 import { useLocation } from '../../router/router.js';
 import { lecturers } from '../../data/lecturers.js';
 import { SORT_OPTIONS, filterLecturers, sortLecturers } from '../../utils/lecturers.js';
@@ -17,6 +18,7 @@ export default function LecturersPage() {
   const [search, setSearch] = useState(urlQuery);
   const [lastUrlQuery, setLastUrlQuery] = useState(urlQuery);
   const [sort, setSort] = useState('default');
+  const [favoriteIds, setFavoriteIds] = useLocalStorage('edu-platform:favorite-lecturers', []);
 
   if (lastUrlQuery !== urlQuery) {
     setLastUrlQuery(urlQuery);
@@ -24,6 +26,14 @@ export default function LecturersPage() {
   }
 
   const visible = useMemo(() => sortLecturers(filterLecturers(lecturers, search), sort), [search, sort]);
+  const favorites = Array.isArray(favoriteIds) ? favoriteIds : [];
+
+  function toggleFavorite(id) {
+    setFavoriteIds((storedIds) => {
+      const ids = Array.isArray(storedIds) ? storedIds : [];
+      return ids.includes(id) ? ids.filter((favoriteId) => favoriteId !== id) : [...ids, id];
+    });
+  }
 
   return (
     <section className="frame section">
@@ -66,7 +76,12 @@ export default function LecturersPage() {
       {visible.length > 0 ? (
         <div className="cards-grid">
           {visible.map((lecturer) => (
-            <LecturerCard key={lecturer.id} lecturer={lecturer} />
+            <LecturerCard
+              key={lecturer.id}
+              lecturer={lecturer}
+              isFavorite={favorites.includes(lecturer.id)}
+              onToggleFavorite={toggleFavorite}
+            />
           ))}
         </div>
       ) : (
