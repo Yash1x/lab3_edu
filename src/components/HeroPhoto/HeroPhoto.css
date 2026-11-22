@@ -1,0 +1,25 @@
+.hero-photo {
+  position: relative;
+  width: var(--hero-photo-width);
+  max-width: 100%;
+  aspect-ratio: 434 / 289;
+  align-self: start;
+  overflow: hidden;
+}
+
+.hero-photo__img {
+  position: absolute;
+  top: calc(-100% * 28 / 289);
+  left: calc(-100% * 13 / 434);
+  width: calc(100% * 472 / 434);
+  max-width: none;
+  height: auto;
+}
+
+.hero-photo__fallback {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 30% 35%, rgb(255 255 255 / 0.35), transparent 45%),
+    var(--gradient-header);
+}

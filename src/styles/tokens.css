@@ -1,0 +1,60 @@
+/*
+ * Дизайн-токены. Значения с пометкой «макет» сняты из Figma (панель Properties),
+ * остальные добавлены для новых блоков, которых в макете нет.
+ */
+:root {
+  /* Цвета — макет */
+  --color-bg: #ffffff;               /* заливка всех фреймов */
+  --color-text: #000000;             /* основной текст */
+  --color-nav-text: #ffffff;         /* пункты «Навигационной панели» */
+  --color-accent: #374ee4;           /* «НАЙТИ ЛЕКТОРА» */
+  --color-line: #1818e5;             /* Line 1 под фото лектора */
+  --color-placeholder: #d9d9d9;      /* Rectangle 1 — место для фото */
+  --gradient-header: linear-gradient(90deg, #9db1d2 0%, #8cb6fb 50%, #adacaa 100%); /* «Хэдер» */
+
+  /* Цвета — дополнительные */
+  --color-page-bg: #f5f5f5;          /* как холст Figma, на нём белые «фреймы» */
+  --color-accent-hover: #2b3fc4;
+  --color-accent-soft: #eef1fd;
+  --color-muted: #5b6275;
+  --color-border: #e3e6ee;
+  --color-border-strong: #c9cedb;
+  --color-surface: #f6f7fb;
+  --color-error: #d93025;
+  --color-success: #1e8e3e;
+  --color-footer: #1f2a44;
+
+  /* Шрифты — макет */
+  --font-main: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-partners: 'Montserrat', var(--font-main);
+
+  /* Кегль — макет (везде Line height 100%, Letter spacing 0%) */
+  --fs-nav: 32px;             /* Inter 600 — пункты меню */
+  --fs-hero: 36px;            /* Inter 600 — «Наши лекторы — признанные…» */
+  --fs-button: 16px;          /* Inter 600 — «НАЙТИ ЛЕКТОРА» */
+  --fs-about: 32px;           /* Inter 600 — текст «О нас» */
+  --fs-lecturer-name: 32px;   /* Inter 600 — «ФИО преподавателя» */
+  --fs-photo-caption: 20px;   /* Inter 400 — «место для фото преподавателя» */
+  --fs-partner-text: 16px;    /* Montserrat 500 — описания партнёров */
+  --fs-partner-arrow: 128px;  /* Montserrat 500 — стрелка ↗ */
+
+  /* Размеры — макет */
+  --container-width: 1170px;  /* фреймы «Главная», «О нас», «Партнеры» */
+  --narrow-width: 1058px;     /* фрейм «Лекторы» */
+  --header-width: 1159px;     /* «Хэдер» */
+  --header-height: 65px;
+  --header-radius: 15px;
+  --hero-photo-width: 434px;  /* изображение в «Для фото лектора» */
+  --hero-photo-height: 289px;
+  --lecturer-photo-width: 220px;
+  --lecturer-photo-height: 235px;
+  --lecturer-line-width: 228px;
+  --lecturer-line-height: 7px;
+  --partner-logo-width: 222px;
+  --partner-logo-height: 93px;
+
+  /* Прочее */
+  --radius-card: 16px;
+  --shadow-card: 0 12px 32px rgb(31 42 68 / 0.12);
+  --focus-ring: 0 0 0 4px rgb(55 78 228 / 0.2);
+}

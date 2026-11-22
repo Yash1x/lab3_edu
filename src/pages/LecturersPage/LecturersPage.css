@@ -1,0 +1,24 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.toolbar__search {
+  flex: 1 1 360px;
+}
+
+.toolbar__sort {
+  flex: 0 1 240px;
+}
+
+.toolbar__count {
+  margin-top: -8px;
+  color: var(--color-muted);
+}
+
+@media (max-width: 640px) {
+  .toolbar__sort {
+    flex-basis: 100%;
+  }
+}

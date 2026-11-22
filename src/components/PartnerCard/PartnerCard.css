@@ -1,0 +1,68 @@
+.partner-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-family: var(--font-partners);
+}
+
+.partner-card__head {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  max-width: 100%;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.partner-card__logo {
+  position: relative;
+  overflow: hidden;
+  width: var(--partner-logo-width);
+  min-width: 0;
+  aspect-ratio: 222 / 93;
+}
+
+.partner-card__logo img {
+  position: absolute;
+  top: calc(-100% * 38 / 93);
+  left: 0;
+  max-width: none;
+}
+
+.partner-card__logo--icl img {
+  width: calc(100% * 396 / 222);
+  /* У экспортированной группы есть своя стрелка справа от логотипа. */
+  clip-path: inset(0 calc(100% * 248 / 396) 0 0);
+}
+
+.partner-card__logo--tatneft img {
+  width: calc(100% * 440 / 222);
+}
+
+.partner-card__logo--text {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.partner-card__arrow {
+  font-size: clamp(64px, 9vw, var(--fs-partner-arrow));
+  font-weight: 500;
+  line-height: 1;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.partner-card__head:hover .partner-card__arrow,
+.partner-card__head:focus-visible .partner-card__arrow {
+  color: var(--color-accent);
+  transform: translate(6px, -6px);
+}
+
+.partner-card__text {
+  max-width: 440px;
+  font-size: var(--fs-partner-text);
+  font-weight: 500;
+  line-height: 1.25; /* в макете 100% — чуть увеличено для читаемости абзаца */
+}

@@ -1,0 +1,48 @@
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: feature;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  border-top: 4px solid var(--color-accent);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.feature__title {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.feature__text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.feature-grid--numbered .feature {
+  counter-increment: feature;
+  border-top: 0;
+}
+
+.feature-grid--numbered .feature::before {
+  content: counter(feature);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 700;
+}

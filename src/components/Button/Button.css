@@ -1,0 +1,70 @@
+.button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border: 2px solid var(--color-accent);
+  border-radius: 999px;
+  font-family: var(--font-main);
+  font-size: var(--fs-button);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button--outline {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.button--outline:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.button--primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.button--primary:hover {
+  border-color: var(--color-accent-hover);
+  background: var(--color-accent-hover);
+}
+
+/* Для размещения на градиенте хэдера и цветных плашках */
+.button--light {
+  border-color: #fff;
+  background: #fff;
+  color: var(--color-accent);
+}
+
+.button--light:hover {
+  background: transparent;
+  color: #fff;
+}
+
+.button__arrow {
+  font-size: 1.2em;
+  transition: transform 0.2s;
+}
+
+.button:hover .button__arrow {
+  transform: translateX(4px);
+}

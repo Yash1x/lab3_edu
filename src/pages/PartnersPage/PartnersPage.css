@@ -1,0 +1,25 @@
+/* Карточки в макете: 427px и 440px, вторая начинается с x=619 — растягиваем по краям */
+.partners {
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+  min-height: 371px;
+  padding: 48px 56px;
+}
+
+.partners__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 440px));
+  justify-content: space-between;
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .partners {
+    padding: 32px 20px;
+  }
+
+  .partners__grid {
+    grid-template-columns: 1fr;
+  }
+}

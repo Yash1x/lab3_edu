@@ -1,0 +1,175 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 96px; /* чтобы липкий хэдер не перекрывал якоря */
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-main);
+  font-size: 16px;
+  color: var(--color-text);
+  background: var(--color-page-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid rgb(55 78 228 / 0.45);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Основная область между хэдером и подвалом */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 70vh;
+  padding: 24px 0 56px;
+}
+
+/* «Фрейм» — белый блок шириной как в макете */
+.frame {
+  width: min(var(--container-width), 100% - 32px);
+  margin: 0 auto;
+  background: var(--color-bg);
+}
+
+.frame--narrow {
+  width: min(var(--narrow-width), 100% - 32px);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 48px 56px;
+}
+
+.section > * {
+  align-self: stretch;
+}
+
+.section > .button {
+  align-self: flex-start;
+}
+
+.section__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.section__lead {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.section__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.chip:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.back-link {
+  width: min(var(--narrow-width), 100% - 32px);
+  margin: 0 auto;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .section {
+    gap: 22px;
+    padding: 32px 20px;
+  }
+
+  .section__title {
+    font-size: 26px;
+  }
+
+  .section__lead {
+    font-size: 16px;
+  }
+}

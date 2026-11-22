@@ -1,0 +1,38 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  min-height: 343px;
+  padding: 48px 102px; /* текст в макете шириной 965px по центру фрейма 1170px */
+}
+
+.about__label {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* В макете Inter 600 32px — по комментарию #5 заменено на Montserrat для акцента */
+.about__text {
+  max-width: 965px;
+  font-family: var(--font-partners);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.about__faq {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .about {
+    min-height: 0;
+    padding: 32px 20px;
+  }
+}

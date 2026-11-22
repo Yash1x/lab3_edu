@@ -1,0 +1,74 @@
+/* По макету: фото с x=59, y=46; блок ФИО с x=318 (зазор 39px после фото 220px) */
+.lecturer-profile {
+  display: grid;
+  grid-template-columns: var(--lecturer-photo-width) minmax(0, 1fr);
+  gap: 32px 39px;
+  padding: 46px 56px 46px 59px;
+}
+
+.lecturer-profile__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.lecturer-profile__name {
+  font-size: clamp(26px, 3vw, var(--fs-lecturer-name));
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px 20px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.facts dt {
+  color: var(--color-muted);
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.lecturer-programs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topics {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.45;
+}
+
+.topics strong {
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .lecturer-profile {
+    grid-template-columns: 1fr;
+    padding: 28px 20px;
+  }
+
+  .facts {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    font-size: 16px;
+  }
+
+  .facts dd {
+    margin-bottom: 10px;
+  }
+}
